@@ -10,6 +10,7 @@ ENV USER root
 ENV PASS root
 ENV DB biblioteca
 ENV CHARSET charset=utf8
+COPY Config.php /var/www/html/Config/Config.php
 COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 COPY app/Sistema-de-biblioteca-basico-php-8-y-mysql/biblioteca.sql /opt
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
