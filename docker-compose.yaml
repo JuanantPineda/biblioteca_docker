@@ -1,0 +1,32 @@
+version: '3.1'
+services:
+  app:
+    container_name: contenedor_php
+    image: juanantpineda/biblioteca:${VERSION_BI}
+    restart: always
+    environment:
+      BASE_URL: ${BASE_URL}
+      HOST: ${HOST}
+      USER: ${USER}
+      PASS: ${PASS}
+      DB: ${DB}
+    ports:
+      - 8081:80
+    volumes:
+      - biblioteca_log:/var/log/apache2/
+    depends_on:
+      - db
+  db:
+    container_name: servidor_mysql
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - mariadb_data:/var/lib/mysql
+volumes:
+    mariadb_data:
+    biblioteca_log:
