@@ -5,9 +5,9 @@ COPY app/Sistema-de-biblioteca-basico-php-8-y-mysql /var/www/html/
 COPY apache2.conf /etc/apache2/
 EXPOSE 80
 ENV BASE_URL http://localhost
-ENV HOST mariadb
-ENV USER root
-ENV PASS root
+ENV DB_HOST mariadb
+ENV DB_USER root
+ENV DB_PASS root
 ENV DB biblioteca
 ENV CHARSET charset=utf8
 COPY Config.php /var/www/html/Config/Config.php
